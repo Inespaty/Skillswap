@@ -1,10 +1,10 @@
-# SkillSwap - Exchange Skills, Grow Together 🚀
+# SkillSwap - Exchange Skills, Grow Together 
 
 **SkillSwap** is a community-driven platform designed to make learning accessible by removing financial barriers. We believe everyone has something to teach and something to learn.
 
 ---
 
-## 💡 The Problem We Solve
+##  The Problem We Solve
 
 In a world where specialized education and skill-building often come with a high price tag, many talented individuals are locked out of growth opportunities. **SkillSwap** solves this by:
 - **Democratizing Learning:** Eliminating the need for money in education.
@@ -13,7 +13,7 @@ In a world where specialized education and skill-building often come with a high
 
 ---
 
-## 🛠️ Implementation & Architecture
+##  Implementation & Architecture
 
 SkillSwap is built as a **Multi-Page Application (MPA)** with a custom-built modular PHP backend.
 
@@ -38,7 +38,7 @@ We use a hybrid approach of traditional HTML and modular JavaScript:
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 ### Backend
 - **Core:** PHP 7.4+
@@ -54,7 +54,7 @@ We use a hybrid approach of traditional HTML and modular JavaScript:
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 - **/assets**: Design tokens, custom CSS, and modular JS components.
 - **/backend**: Core logic, API endpoints, and database connection helpers.
@@ -64,7 +64,7 @@ We use a hybrid approach of traditional HTML and modular JavaScript:
 
 ---
 
-## ⚙️ Getting Started
+##  Getting Started
 
 ### Prerequisites
 - PHP 7.4 or higher
@@ -91,4 +91,3 @@ We use a hybrid approach of traditional HTML and modular JavaScript:
 
 ---
 
-**SkillSwap** - Built with ❤️ for developers and lifelong learners.
