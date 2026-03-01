@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+  style="padding: 0.75rem 0; border-bottom: 2px solid #E2E8F0;">
+  <div class="container">
+    <a class="navbar-brand fw-bold d-flex align-items-center nav-logo" href="index.html"
+      style="font-size: 1.25rem; text-decoration: none; color: #C11C84;">
+      <i class="fas fa-exchange-alt me-2" style="font-size: 1.5rem; color: #C11C84;"></i>
+      SkillSwap
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center" style="flex-direction: row; gap: 0.5rem;">
+        <!-- Guest only: About -->
+        <li class="nav-item" id="navbarAboutLink">
+          <a class="nav-link fw-500" href="about.html" style="color: #1F2937; white-space: nowrap;">About</a>
+        </li>
+        <!-- Authenticated Links (hidden by default) -->
+        <li class="nav-item" id="navbarDashboardLink" style="display: none;">
+          <a class="nav-link fw-500" href="dashboard.html" style="color: #1F2937; white-space: nowrap;">Dashboard</a>
+        </li>
+        <!-- Admin Menu (hidden by default, shown only for admins) -->
+        <li class="nav-item dropdown" id="navbarAdminMenu" style="display: none;">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+            style="color: #1F2937;">
+            <i class="fas fa-shield-alt"></i> Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="admin-categories.html"><i class="fas fa-list me-2"></i>Manage
+                Categories</a></li>
+            <li><a class="dropdown-item" href="admin.html"><i class="fas fa-cog me-2"></i>Admin Panel</a></li>
+          </ul>
+        </li>
+        <!-- Guest/Auth Buttons -->
+        <div id="navbarAuthButtons" style="display: flex; align-items: center; gap: 0.5rem; margin-left: 0.5rem;">
+          <!-- Auth buttons will be injected here -->
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.Auth) {
+      window.Auth.updateUI();
+    }
+  });
+</script>

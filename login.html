@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <style>
+        body {
+            padding-top: 0;
+            background-color: #f8f9fa;
+        }
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* vertically center the card */
+            padding: 2rem 0; /* add some padding */
+        }
+        .auth-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1.2rem rgba(15, 23, 42, 0.06);
+            overflow: hidden;
+            max-width: 480px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .auth-header {
+            background: #1e293b;
+            color: white;
+            padding: 1.25rem 1.5rem; /* slightly reduced header height */
+            text-align: center;
+        }
+        .auth-body {
+            padding: 1.5rem 1.5rem;
+            color:black;
+        }
+        .form-control:focus {
+            border-color: #1e293b;
+            box-shadow: 0 0 0 0.25rem rgba(30, 41, 59, 0.25);
+        }
+        .btn-login {
+            background: linear-gradient(135deg, #C11C84 0%, #1A73E8 100%);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .btn-login:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .auth-footer {
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            background-color: #f9f9f9;
+            color:black
+        }
+        .form-label {
+
+            color:rgb(34, 32, 32);
+
+        }
+        .form-control{
+            color:rgb(34, 32, 30)
+        }
+        /* ensure footer link is relative and visible */
+        .auth-footer a { color: var(--color-primary); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="auth-card">
+                        <div class="auth-header">
+                            <h2>Welcome Back</h2>
+                            <p class="mb-0">Sign in to access your account</p>
+                        </div>
+                        
+                        <div class="auth-body">
+                            <!-- Success message container (for registration redirect) -->
+                            <div id="registrationSuccess" class="alert alert-success d-none" role="alert">
+                                <i class="fas fa-check-circle me-2"></i>Registration successful! Please log in to continue.
+                            </div>
+                            <!-- Error message container -->
+                            <div id="loginError" class="alert alert-danger d-none" role="alert"></div>
+
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <label for="password" class="form-label">Password</label>
+                                        
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Remember me
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 btn-login">
+                                    Sign In
+                                </button>
+                                
+                           
+                        <div class="auth-footer">
+                            Don't have an account? <a href="register.html" class="text-decoration-none">Sign up</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script>
+        // Error display function
+        function showError(message) {
+            const errorElement = document.getElementById('loginError');
+            errorElement.textContent = message;
+            errorElement.classList.remove('d-none');
+            errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Real-time validation
+        function validateField(fieldId, validator, errorMessage) {
+            const field = document.getElementById(fieldId);
+            const feedback = document.getElementById(fieldId + 'Feedback');
+
+            field.addEventListener('input', () => {
+                document.getElementById('loginError').classList.add('d-none');
+
+                if (validator(field.value)) {
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                    if (feedback) feedback.style.display = 'none';
+                } else {
+                    field.classList.remove('is-valid');
+                    field.classList.add('is-invalid');
+                    if (feedback) {
+                        feedback.textContent = errorMessage;
+                        feedback.style.display = 'block';
+                    }
+                }
+            });
+        }
+
+        // Add validation feedback elements
+        ['email', 'password'].forEach(id => {
+            const field = document.getElementById(id);
+            if (field) {
+                const feedback = document.createElement('div');
+                feedback.id = id + 'Feedback';
+                feedback.className = 'invalid-feedback';
+                feedback.style.display = 'none';
+                field.parentNode.appendChild(feedback);
+            }
+        });
+
+        // Set up real-time validation
+        validateField('email', (val) => val.trim() === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()), 'Please enter a valid email address');
+        validateField('password', (val) => val.length >= 1, 'Password is required');
+
+        // Wait for DOM and auth.js to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if redirected from registration
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('registered') === 'true') {
+                const successMsg = document.getElementById('registrationSuccess');
+                if (successMsg) {
+                    successMsg.classList.remove('d-none');
+                    // Scroll to top to show the message
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+            // Toggle password visibility
+            const togglePassword = document.getElementById('togglePassword');
+            if (togglePassword) {
+                togglePassword.addEventListener('click', function() {
+                    const passwordInput = document.getElementById('password');
+                    const icon = this.querySelector('i');
+
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                });
+            }
+            
+            // Form submission
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('email').value.trim();
+                    const password = document.getElementById('password').value;
+                    const rememberMe = document.getElementById('rememberMe').checked;
+                    
+                    const loginButton = this.querySelector('button[type="submit"]');
+                    const originalButtonText = loginButton.innerHTML;
+                    
+                    // Basic validation
+                    if (!email || !password) {
+                        showError('Please enter both email and password');
+                        return;
+                    }
+
+                    // Email format validation
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        showError('Please enter a valid email address');
+                        return;
+                    }
+                    
+                    try {
+                        // Show loading state
+                        loginButton.disabled = true;
+                        loginButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Signing in...';
+                        
+                        const response = await fetch('backend/auth/login.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            credentials: 'include', // Important for session cookies
+                            body: JSON.stringify({
+                                username: email,
+                                password: password
+                            })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (!response.ok || !data.user) {
+                            throw new Error(data.error || data.message || 'Login failed');
+                        }
+                        
+                        // Ensure Auth object is available
+                        if (typeof window.Auth === 'undefined' || !window.Auth.setCurrentUser) {
+                            console.error('Auth object not loaded');
+                            // Fallback: store directly
+                            localStorage.setItem('currentUser', JSON.stringify(data.user));
+                        } else {
+                            // Store user data in localStorage using Auth helper
+                            window.Auth.setCurrentUser(data.user);
+                        }
+                        
+                        // Store session data if remember me is checked
+                        if (rememberMe) {
+                            localStorage.setItem('rememberMe', 'true');
+                        }
+                        
+                        // Small delay to ensure localStorage is saved
+                        setTimeout(() => {
+                            // Redirect to admin dashboard for admin users, otherwise to regular dashboard
+                            if (data.user && data.user.is_admin) {
+                                window.location.href = 'admin.html';
+                            } else {
+                                window.location.href = 'dashboard.html';
+                            }
+                        }, 100);
+                    } catch (error) {
+                        console.error('Login error:', error);
+                        showError(error.message || 'An error occurred during login. Please try again.');
+                    } finally {
+                        // Reset button state
+                        loginButton.disabled = false;
+                        loginButton.innerHTML = originalButtonText;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SkillSwap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/upwork-style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        body {
+            padding-top: 0;
+            background-color: #2D2D2D;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #dashboardContainer {
+            background-color: #F5F5F5;
+        }
+
+        /* Ensure navbar stays at top */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1030;
+        }
+
+        .dashboard-header {
+            background: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="page-title-upwork mb-1">Dashboard</h1>
+                    <p class="page-subtitle-upwork">Manage your skills and track your activity</p>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-4" id="dashboardContainer" style="flex: 1;">
+        <!-- Content will be loaded here dynamically -->
+        <div class="text-center py-5">
+            <p class="text-muted">Loading dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-placeholder" style="margin-top: auto; width: 100%;"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/access-control.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/shared/skill-utils.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script>
+        // Ensure only regular users can access this page - MUST await the async function
+        (async function () {
+            await checkUserAccess();
+        })();
+
+        // Load navbar and check authentication
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load navbar
+            fetch('assets/components/navbar.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('navbar-placeholder').innerHTML = html;
+                    // Initialize auth after navbar is loaded
+                    if (window.Auth && window.Auth.updateUI) {
+                        window.Auth.updateUI();
+                    }
+
+                    // Protect route - redirect to login if not authenticated
+                    if (window.Auth && window.Auth.protectRoute) {
+                        window.Auth.protectRoute();
+                    }
+                });
+
+            // Load footer
+            fetch('assets/components/footer.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-placeholder').innerHTML = html;
+                });
+
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+
+</html>

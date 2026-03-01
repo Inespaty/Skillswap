@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Exchange Skills, Grow Together</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <style>
+        body {
+            padding-top: 0;
+            background-color: #f8f9fa;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.05) 0%, rgba(100, 116, 139, 0.03) 100%);
+            margin-top: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #4B5563;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: #1e293b;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #334155;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 41, 59, 0.3);
+        }
+
+        .btn-outline-primary {
+            border: 2px solid #1e293b;
+            color: #1e293b;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #1e293b;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(30, 41, 59, 0.2);
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #4B5563;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            background: rgba(30, 41, 59, 0.1);
+            color: #1e293b;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1F2937;
+        }
+
+        .feature-text {
+            color: #4B5563;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: rgba(30, 41, 59, 0.05);
+            border-radius: 1.5rem;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            color: #4B5563;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #4B5563;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .testimonial-info h5 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1F2937;
+        }
+
+        .testimonial-info p {
+            margin: 0.25rem 0 0;
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .skill-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1F2937;
+        }
+
+        .skill-category {
+            display: inline-block;
+            background: rgba(30, 41, 59, 0.1);
+            color: #1e293b;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #4B5563;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .skill-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-rating {
+            color: #F59E0B;
+            font-weight: 600;
+        }
+
+        .skill-rating i {
+            margin-right: 0.25rem;
+        }
+
+        .skill-price {
+            font-weight: 700;
+            color: #1F2937;
+        }
+
+        .free-badge {
+            background: #10B981;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        footer {
+            background-color: #0F172A;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo i {
+            margin-right: 0.5rem;
+            color: #1e293b;
+        }
+
+        .footer-about {
+            color: #94A3B8;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #1e293b;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3B82F6;
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            color: #94A3B8;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .footer-contact i {
+            margin-right: 0.75rem;
+            color: #3B82F6;
+            margin-top: 0.25rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94A3B8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p,
+            .cta-text,
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title,
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 5rem 0;
+                padding-top: 7rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn,
+            .btn-outline-primary {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 style="color: #1e293b;"> Learn. Teach. <span style="color: #C11C84;">Grow Together.</span>
+                    </h1>
+                    <p style="color: #4B5563;">
+                        Exchange your skills with others in your community. No money needed, just pure skill sharing.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="register.html" class="btn btn-primary">
+                            Get Started
+                        </a>
+                        <a href="#how-it-works" class="btn btn-outline-primary">
+                            How It Works
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="People learning together" class="img-fluid rounded-3 shadow"
+                        style="max-height: 500px; width: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="section" style="background-color: white; padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;color: #1e293b;">Why SkillSwap?</h2>
+                <p class="text-secondary" style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                    A better way to learn and share skills in your community
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <!-- Feature 1 -->
+                <div class="card" style="border: none; text-align: center; padding: 2rem; transition: all 0.3s ease;">
+                    <div
+                        style="width: 70px; height: 70px; background-color: rgba(193, 28, 132, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-exchange-alt" style="font-size: 1.75rem; color: #C11C84;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Skill Exchange</h3>
+                    <p class="text-secondary">Trade your expertise with others who have skills you want to learn.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card" style="border: none; text-align: center; padding: 2rem; transition: all 0.3s ease;">
+                    <div
+                        style="width: 70px; height: 70px; background-color: rgba(30, 41, 59, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-users" style="font-size: 1.75rem; color:#C11C84;;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Build Community</h3>
+                    <p class="text-secondary">Connect with like-minded individuals in your area.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card" style="border: none; text-align: center; padding: 2rem; transition: all 0.3s ease;">
+                    <div
+                        style="width: 70px; height: 70px; background-color: rgba(193, 28, 132, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                        <i class="fas fa-graduation-cap" style="font-size: 1.75rem; color: #C11C84;"></i>
+                    </div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Learn Freely</h3>
+                    <p class="text-secondary">No expensive courses or subscriptions - just pure skill sharing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section" style="background-color: #f8f9fa; padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #1e293b;">How It Works</h2>
+                <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem; color: #6B7280;">
+                    Get started in three simple steps
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div
+                    style="text-align: center; padding: 2rem 1.5rem; border-radius: var(--radius-md); background: #1e293b; box-shadow: var(--shadow);">
+                    <div
+                        style="width: 60px; height: 60px; background-color: #C11C84; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 700; font-size: 1.5rem;">
+                        1</div>
+                    <h3 style="margin-bottom: 1rem; color: white;">Create Profile</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Sign up and list your skills</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div
+                    style="text-align: center; padding: 2rem 1.5rem; border-radius: var(--radius-md); background: #1e293b; box-shadow: var(--shadow);">
+                    <div
+                        style="width: 60px; height: 60px; background-color: #C11C84; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 700; font-size: 1.5rem;">
+                        2</div>
+                    <h3 style="margin-bottom: 1rem; color: white;">Find a Match</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Browse skills or connect with others</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div
+                    style="text-align: center; padding: 2rem 1.5rem; border-radius: var(--radius-md); background: #1e293b; box-shadow: var(--shadow);">
+                    <div
+                        style="width: 60px; height: 60px; background-color: #C11C84; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-weight: 700; font-size: 1.5rem;">
+                        3</div>
+                    <h3 style="margin-bottom: 1rem; color: white;">Start Learning</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">Meet and exchange skills</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/register.html" class="btn btn-primary" style="padding: 0.75rem 2.5rem; font-size: 1.1rem;">
+                    Join Now - It's Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/navbar.js"></script>
+    <script src="assets/js/index-featured-skills.js"></script>
+    <script>
+        // Load navbar and footer
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load navbar
+            fetch('assets/components/navbar.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load navbar');
+                    return res.text();
+                })
+                .then(html => {
+                    document.getElementById('navbar-placeholder').innerHTML = html;
+                    // Initialize navbar after HTML is inserted
+                    if (window.Auth && window.Auth.updateUI) {
+                        window.Auth.updateUI();
+                    }
+                    if (window.Navbar && window.Navbar.update) {
+                        window.Navbar.update();
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading navbar:', err);
+                    // Don't block page load if navbar fails
+                });
+
+            // Load footer
+            fetch('assets/components/footer.html')
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load footer');
+                    return res.text();
+                })
+                .then(html => {
+                    document.getElementById('footer-placeholder').innerHTML = html;
+                })
+                .catch(err => {
+                    console.error('Error loading footer:', err);
+                    // Don't block page load if footer fails
+                });
+
+            // Simple animation on scroll
+            function animateOnScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('fade-in');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Run once on page load
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Account - SkillSwap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <style>
+    body {
+      padding-top: 0;
+      background-color: #f8f9fa;
+    }
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 2rem 0;
+    }
+    .auth-card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .auth-header {
+        background: #1e293b;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+    }
+    .auth-body {
+      padding: 2rem;
+    }
+    .form-control:focus {
+        border-color: #1e293b;
+        box-shadow: 0 0 0 0.25rem rgba(30, 41, 59, 0.25);
+    }
+    .btn-register {
+      background: linear-gradient(135deg, #C11C84 0%, #1A73E8 100%);
+      border: none;
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .btn-register:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    .auth-footer {
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #eee;
+      background-color: none;
+      color:black
+    }
+    .password-requirements {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 0.5rem;
+    }
+    .requirement {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.25rem;
+    }
+    .requirement i {
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .divider::before {
+      margin-right: 1rem;
+    }
+    .divider::after {
+      margin-left: 1rem;
+    }
+    .social-login {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .social-login .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .form-label{
+      color:rgb(34, 32, 32);
+    }
+    .form-control{
+      color:rgb(34, 32, 30)
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="auth-card">
+            <div class="auth-header">
+              <h2>Create Your Account</h2>
+              <p class="mb-0">Join our community of learners and teachers</p>
+            </div>
+
+            <div class="auth-body">
+              <!-- Error message container -->
+              <div id="registerError" class="alert alert-danger d-none" role="alert"></div>
+
+              <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="you@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="input-group mb-2">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" class="form-control" id="password" required />
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                  </div>
+                  <div class="password-requirements">
+                    <div class="requirement" id="req-length">
+                      <i class="far fa-circle me-2"></i> At least 8 characters
+                    </div>
+                    <div class="requirement" id="req-letter">
+                      <i class="far fa-circle me-2"></i> At least one letter
+                    </div>
+                    <div class="requirement" id="req-number">
+                      <i class="far fa-circle me-2"></i> At least one number
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="terms" required />
+                  <label class="form-check-label" for="terms">
+                    
+                    <a href="#" class="text-decoration-none">I agree to the Terms of Service and Privacy Policy
+                    </a>  
+                  </label>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary w-100 btn-register" id="registerBtn">
+                    <span id="registerBtnText">Create Account</span>
+                    <div
+                      id="registerSpinner"
+                      class="spinner-border spinner-border-sm d-none"
+                      role="status"
+                    >
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  </button>
+                </div>
+                
+                
+              </form>
+            </div>
+
+            <div class="auth-footer">
+              Already have an account?
+              <a href="/login.html" class="text-decoration-none">Sign in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    // Real-time validation
+    function validateField(fieldId, validator, errorMessage) {
+      const field = document.getElementById(fieldId);
+      const feedback = document.getElementById(fieldId + 'Feedback');
+
+      field.addEventListener('input', () => {
+        document.getElementById('registerError').classList.add('d-none');
+
+        if (validator(field.value)) {
+          field.classList.remove('is-invalid');
+          field.classList.add('is-valid');
+          if (feedback) feedback.style.display = 'none';
+        } else {
+          field.classList.remove('is-valid');
+          field.classList.add('is-invalid');
+          if (feedback) {
+            feedback.textContent = errorMessage;
+            feedback.style.display = 'block';
+          }
+        }
+      });
+    }
+
+    // Add validation feedback elements
+    ['firstName', 'lastName', 'email', 'password'].forEach(id => {
+      const field = document.getElementById(id);
+      if (field) {
+        const feedback = document.createElement('div');
+        feedback.id = id + 'Feedback';
+        feedback.className = 'invalid-feedback';
+        feedback.style.display = 'none';
+        field.parentNode.appendChild(feedback);
+      }
+    });
+
+    // Set up real-time validation
+    validateField('firstName', (val) => val.trim().length >= 2, 'First name must be at least 2 characters');
+    validateField('lastName', (val) => val.trim().length >= 2, 'Last name must be at least 2 characters');
+    validateField('email', (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), 'Please enter a valid email address');
+    validateField('password', (val) => val.length >= 8 && /[A-Za-z]/.test(val) && /[0-9]/.test(val),
+                  'Password must be at least 8 characters with letters and numbers');
+
+    // Handle registration form submission
+    async function handleRegister(event) {
+      event.preventDefault();
+      const form = event.target;
+
+      const firstName = form.firstName.value.trim();
+      const lastName = form.lastName.value.trim();
+      const email = form.email.value.trim();
+      const password = form.password.value;
+
+      if (!firstName || !lastName || !email || !password) {
+        showError('Please fill in all fields');
+        return;
+      }
+
+      // Password rules: at least 8 chars, at least one letter, at least one number
+      if (
+        password.length < 8 ||
+        !/[A-Za-z]/.test(password) ||
+        !/[0-9]/.test(password)
+      ) {
+        showError(
+          'Password must be at least 8 characters long and contain both letters and numbers'
+        );
+        return;
+      }
+
+      if (!form.terms.checked) {
+        showError('You must agree to the Terms of Service and Privacy Policy');
+        return;
+      }
+
+      const data = {
+        name: firstName + ' ' + lastName,
+        email,
+        password,
+      };
+
+      const registerBtn = document.getElementById('registerBtn');
+      const registerBtnText = document.getElementById('registerBtnText');
+      const registerSpinner = document.getElementById('registerSpinner');
+
+      registerBtn.disabled = true;
+      registerBtnText.textContent = 'Creating Account...';
+      registerSpinner.classList.remove('d-none');
+
+      try {
+        const response = await fetch('backend/auth/register.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        // Read raw text first so we can surface non-JSON errors (useful while debugging)
+        const text = await response.text();
+        let result = null;
+        try {
+          result = text ? JSON.parse(text) : null;
+        } catch (parseErr) {
+          // Keep result as null if server returned non-JSON (HTML/error page)
+          console.warn('Response not valid JSON:', parseErr);
+        }
+
+        if (response.ok) {
+          window.location.href = 'login.html?registered=true';
+        } else {
+          // Prefer structured JSON error, otherwise show raw text or status
+          if (result && result.error) {
+            showError(result.error);
+          } else if (text) {
+            // Trim long HTML/error responses to first 1000 chars for readability
+            const preview = text.length > 1000 ? text.slice(0, 1000) + '... [truncated]' : text;
+            showError('Server response: ' + preview);
+          } else {
+            showError('Registration failed. Status: ' + response.status);
+          }
+        }
+      } catch (error) {
+        console.error('Registration error:', error);
+        showError('An error occurred. Please try again.');
+      } finally {
+        registerBtn.disabled = false;
+        registerBtnText.textContent = 'Create Account';
+        registerSpinner.classList.add('d-none');
+      }
+    }
+
+    function showError(message) {
+      const errorElement = document.getElementById('registerError');
+      errorElement.textContent = message;
+      errorElement.classList.remove('d-none');
+      errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Password strength checker (matching PHP rules: letters and numbers, min length 8)
+    const passwordInput = document.getElementById('password');
+    passwordInput.addEventListener('input', (e) => {
+      const password = e.target.value;
+      const requirements = {
+        length: password.length >= 8,
+        letter: /[A-Za-z]/.test(password),
+        number: /[0-9]/.test(password),
+      };
+      updatePasswordRequirements(requirements);
+    });
+
+    function updatePasswordRequirements(requirements) {
+      Object.keys(requirements).forEach((key) => {
+        const el = document.getElementById(`req-${key}`);
+        if (requirements[key]) {
+          el.classList.add('text-success');
+          el.classList.remove('text-muted');
+          el.querySelector('i').className = 'fas fa-check-circle me-2';
+        } else {
+          el.classList.remove('text-success');
+          el.classList.add('text-muted');
+          el.querySelector('i').className = 'far fa-circle me-2';
+        }
+      });
+    }
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', () => {
+      const input = passwordInput;
+      const icon = document.querySelector('#togglePassword i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    });
+
+    // No navbar or footer needed on register page
+  </script>
+</body>
+</html>

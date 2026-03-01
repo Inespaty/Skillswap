@@ -1,0 +1,434 @@
+/* Upwork-Inspired Professional Design Styles */
+
+/* Page Layout - Upwork Style */
+body {
+    background-color: #F5F5F5 !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Professional Card Design */
+.upwork-card {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.upwork-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-color: #D0D0D0;
+}
+
+.upwork-card-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #E0E0E0;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upwork-card-body {
+    padding: 1.5rem;
+}
+
+.upwork-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #222222;
+    margin: 0;
+}
+
+/* Professional Button Styles */
+.btn-upwork-primary {
+    background-color: #C11C84;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.btn-upwork-primary:hover {
+    background-color: #E03DA5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(193, 28, 132, 0.2);
+}
+
+.btn-upwork-secondary {
+    background-color: #FFFFFF;
+    color: #222222;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    padding: 0.625rem 1.25rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+}
+
+.btn-upwork-secondary:hover {
+    background-color: #F5F5F5;
+    border-color: #C0C0C0;
+}
+
+/* Professional Stat Cards */
+.stat-card-upwork {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.stat-card-upwork:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.stat-value-upwork {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #C11C84;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label-upwork {
+    font-size: 0.875rem;
+    color: #666666;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Professional Table Styles */
+.table-upwork {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table-upwork thead {
+    background-color: #F5F5F5;
+}
+
+.table-upwork thead th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #222222;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid #E0E0E0;
+}
+
+.table-upwork tbody td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #F0F0F0;
+    color: #333333;
+}
+
+.table-upwork tbody tr:hover {
+    background-color: #FAFAFA;
+}
+
+/* Professional Input Styles */
+.input-upwork {
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+    background: #FFFFFF;
+    color: #222222 !important; /* Ensure text is visible */
+}
+
+.input-upwork:focus {
+    border-color: #C11C84;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(193, 28, 132, 0.1);
+    color: #222222 !important; /* Ensure text remains visible on focus */
+    background: #FFFFFF !important;
+}
+
+.input-upwork::placeholder {
+    color: #999999 !important; /* Visible placeholder text */
+}
+
+/* Ensure form labels are visible */
+.form-label {
+    color: #222222 !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure select options are visible */
+.form-select.input-upwork,
+select.input-upwork {
+    color: #222222 !important;
+    background-color: #FFFFFF !important;
+}
+
+.form-select.input-upwork option,
+select.input-upwork option {
+    color: #222222 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Ensure textarea is visible */
+textarea.input-upwork {
+    color: #222222 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Ensure number inputs are visible */
+input[type="number"].input-upwork {
+    color: #222222 !important;
+    background-color: #FFFFFF !important;
+}
+
+/* Ensure input group text is visible */
+.input-group-text {
+    color: #222222 !important;
+    background-color: #F5F5F5 !important;
+}
+
+/* Professional Badge Styles */
+.badge-upwork {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-upwork-primary {
+    background-color: #F7C5E5;
+    color: #9A1569;
+}
+
+.badge-upwork-success {
+    background-color: #D1FAE5;
+    color: #065F46;
+}
+
+.badge-upwork-info {
+    background-color: #BFD6FF;
+    color: #0B3C93;
+}
+
+/* Professional Page Header */
+.page-header-upwork {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-title-upwork {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222222;
+    margin: 0;
+}
+
+.page-subtitle-upwork {
+    font-size: 0.9375rem;
+    color: #666666;
+    margin: 0.5rem 0 0;
+}
+
+/* Professional Skill Card */
+.skill-card-upwork {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-card-upwork:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    border-color: #C11C84;
+}
+
+.skill-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #F5F5F5;
+}
+
+.skill-card-content {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.skill-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 0.5rem;
+}
+
+.skill-card-description {
+    font-size: 0.9375rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.skill-card-footer {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #F0F0F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FAFAFA;
+}
+
+.skill-card-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #C11C84;
+}
+
+/* Professional Profile Header */
+.profile-header-upwork {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Professional Message Card */
+.message-card-upwork {
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.message-card-upwork:hover {
+    background: #FAFAFA;
+    border-color: #C0C0C0;
+}
+
+/* Credit Display */
+.credit-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #F7C5E5;
+    color: #9A1569;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.credit-badge i {
+    font-size: 1rem;
+}
+
+/* Professional Section Spacing */
+.section-upwork {
+    padding: 2rem 0;
+}
+
+/* Professional Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #999999;
+}
+
+/* Pagination Styles */
+.pagination .page-link {
+    color: #C11C84;
+    border-color: #E0E0E0;
+    padding: 0.5rem 0.75rem;
+}
+
+.pagination .page-link:hover {
+    background-color: #F7C5E5;
+    border-color: #C11C84;
+    color: #9A1569;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #C11C84;
+    border-color: #C11C84;
+    color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #999999;
+    background-color: #F5F5F5;
+    border-color: #E0E0E0;
+    cursor: not-allowed;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    color: #CCCCCC;
+    margin-bottom: 1rem;
+}
+
+.empty-state-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #666666;
+    margin-bottom: 0.5rem;
+}
+
+
+.empty-state-text {
+    font-size: 0.9375rem;
+    color: #999999;
+}
+
+/* Upwork Tabs Styling */
+.nav-tabs {
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.nav-tabs .nav-link {
+    color: #666666; /* Dark grey for inactive - ensures visibility */
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    margin-bottom: -1px;
+    transition: all 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #C11C84;
+    background: rgba(193, 28, 132, 0.05);
+}
+
+.nav-tabs .nav-link.active {
+    color: #222222 !important;
+    background: #FFFFFF;
+    border-bottom: 2px solid #C11C84;
+    font-weight: 600;
+}
+
